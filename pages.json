@@ -1,16 +1,237 @@
 {
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 		{
-			"path": "pages/user/index",
+			"path": "pages/tabBar/message/message",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+		
+		}, {
+			"path": "pages/tabBar/socialCircle/socialCircle",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+		
+		},{
+			"path": "pages/tabBar/recommend/recommend",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/tabBar/user/user",
 			"style": {
 				"navigationBarTitleText": "uni-app"
 			}
+		},
+
+ {
+			"path": "pages/basic/introduce/introduce",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/basic/lifeStatus/lifeStatus",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/basic/certificate/certificate",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/basic/matching/matching",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/basic/question/question",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/basic/privacy/privacy",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/basic/customer/customer",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/basic/setting/setting",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/basic/shop/shop",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/basic/activity/activity",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/basic/matchMaker/matchMaker",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "wxcomponents/circle/circle",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/basic/replay/replay",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/basic/clockIn/clockIn",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/basic/square/square",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+
 		}
-	],
+	    ,{
+            "path" : "pages/basic/paperAirplane/paperAirplane",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/basic/offlineActivity/offlineActivity",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/basic/marry/marry",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/basic/request/request",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/basic/friendList/friendList",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+    ],
+
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
-		"navigationBarTitleText": "uni-app",
+		"navigationBarTitleText": "赣圈儿",
 		"navigationBarBackgroundColor": "#F8F8F8",
-		"backgroundColor": "#F8F8F8"
+		"backgroundColor": "#7A7E83",
+		"usingComponents": {
+			"van-button": "/wxcomponents/vant/dist/button/index",
+			"van-row": "/wxcomponents/vant/dist/row/index",
+			"van-col": "/wxcomponents/vant/dist/col/index",
+			"van-image": "/wxcomponents/vant/dist/image/index",
+			"van-cell": "/wxcomponents/vant/dist/cell/index",
+			"van-cell-group": "/wxcomponents/vant/dist/cell-group/index",
+			"van-grid": "/wxcomponents/vant/dist/grid/index",
+			"van-grid-item": "/wxcomponents/vant/dist/grid-item/index",
+			"van-icon": "/wxcomponents/vant/dist/icon/index",
+			"van-tab": "/wxcomponents/vant/dist/tab/index",
+			"van-tabs": "/wxcomponents/vant/dist/tabs/index",
+			"van-dialog": "/wxcomponents/vant/dist/dialog/index", 
+			"van-dropdown-menu": "/wxcomponents/vant/dist/dropdown-menu/index",
+			"van-dropdown-item": "/wxcomponents/vant/dist/dropdown-item/index",
+			"van-share-sheet": "/wxcomponents/vant/dist/share-sheet/index",
+			"circle": "/wxcomponents/circle/circle"
+		}
+	},
+	"tabBar": {
+		"color": "#7A7E83",
+		"selectedColor": "#007AFF",
+		"borderStyle": "black",
+		"backgroundColor": "#F8F8F8",
+		"list": [{
+				"pagePath": "pages/tabBar/recommend/recommend",
+				"iconPath": "static/recommend.png",
+				"selectedIconPath": "static/recommend-sel.png",
+				"text": "推荐"
+			},
+			{
+				"pagePath": "pages/tabBar/socialCircle/socialCircle",
+				"iconPath": "static/circle.png",
+				"selectedIconPath": "static/circle-sel.png",
+				"text": "圈儿"
+			}, {
+				"pagePath": "pages/tabBar/message/message",
+				"iconPath": "static/message.png",
+				"selectedIconPath": "static/message-sel.png",
+				"text": "消息"
+			}, {
+				"pagePath": "pages/tabBar/user/user",
+				"iconPath": "static/mine.png",
+				"selectedIconPath": "static/mine-sel.png",
+				"text": "我的"
+			}
+		]
 	}
 }
