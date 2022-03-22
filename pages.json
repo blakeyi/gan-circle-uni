@@ -1,21 +1,21 @@
 {
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 		{
+			"path": "pages/tabBar/recommend/recommend",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
 			"path": "pages/tabBar/message/message",
 			"style": {
 				"navigationBarTitleText": "",
 				"enablePullDownRefresh": false
 			}
-		
+
 		}, {
 			"path": "pages/tabBar/socialCircle/socialCircle",
-			"style": {
-				"navigationBarTitleText": "",
-				"enablePullDownRefresh": false
-			}
-		
-		},{
-			"path": "pages/tabBar/recommend/recommend",
 			"style": {
 				"navigationBarTitleText": "",
 				"enablePullDownRefresh": false
@@ -28,7 +28,7 @@
 			}
 		},
 
- {
+		{
 			"path": "pages/basic/introduce/introduce",
 			"style": {
 				"navigationBarTitleText": "",
@@ -133,53 +133,43 @@
 				"enablePullDownRefresh": false
 			}
 
+		}, {
+			"path": "pages/basic/paperAirplane/paperAirplane",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/basic/offlineActivity/offlineActivity",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/basic/marry/marry",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/basic/request/request",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/basic/friendList/friendList",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+
 		}
-	    ,{
-            "path" : "pages/basic/paperAirplane/paperAirplane",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-        ,{
-            "path" : "pages/basic/offlineActivity/offlineActivity",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-        ,{
-            "path" : "pages/basic/marry/marry",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-        ,{
-            "path" : "pages/basic/request/request",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-        ,{
-            "path" : "pages/basic/friendList/friendList",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-    ],
+	],
 
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
@@ -198,7 +188,7 @@
 			"van-icon": "/wxcomponents/vant/dist/icon/index",
 			"van-tab": "/wxcomponents/vant/dist/tab/index",
 			"van-tabs": "/wxcomponents/vant/dist/tabs/index",
-			"van-dialog": "/wxcomponents/vant/dist/dialog/index", 
+			"van-dialog": "/wxcomponents/vant/dist/dialog/index",
 			"van-dropdown-menu": "/wxcomponents/vant/dist/dropdown-menu/index",
 			"van-dropdown-item": "/wxcomponents/vant/dist/dropdown-item/index",
 			"van-share-sheet": "/wxcomponents/vant/dist/share-sheet/index",

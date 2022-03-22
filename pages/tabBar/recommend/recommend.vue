@@ -2,16 +2,16 @@
 	<view class="content">
 			<!-- 功能栏 -->
 			<van-row gutter="20" style="width: 100%; margin-top: 1rem;">
-				<van-col span="6" offset="1">
-				<van-button icon="replay" plain round type="default" size="small" @click="handleReplay">回看
+				<van-col span="4">
+				<van-button icon="replay" plain round type="default" size="mini" @click="handleReplay">回看
 				</van-button>
 			</van-col>
-			<van-col span="8" offset="1">
-				<van-button icon="setting-o" plain round type="default" size="small" @click="handlePerfence">偏好设置
+			<van-col span="6">
+				<van-button icon="setting-o" plain round type="default" size="mini" @click="handlePerfence">偏好设置
 				</van-button>
 			</van-col>
-			<van-col span="6" offset="1">
-				<van-button icon="flag-o" plain round type="default" size="small" @click="handleClockIn">签到</van-button>
+			<van-col span="4">
+				<van-button icon="flag-o" plain round type="default" size="mini" @click="handleClockIn">签到</van-button>
 			</van-col>
 		</van-row>
 		<!-- 单身广场 -->

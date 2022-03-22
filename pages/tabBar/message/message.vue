@@ -17,34 +17,30 @@
 			</van-col>
 		</van-row>
 		<van-row style="width: 100%; margin-top: 1rem;">
-			<van-col span="10">
+			<van-col span="12">
 				<van-dropdown-menu :board="false">
 					<van-dropdown-item :value="value_chatType" :options="option_chatType" />
 				</van-dropdown-menu>
 			</van-col>
-			<van-col span="6" offset="8">
-				<van-button plain round @click="handleFriendList">好友列表</van-button>
+			<van-col span="4" offset="8">
+				<van-button plain round size="mini" @click="handleFriendList" style="margin-top: 1rem;">好友列表</van-button>
 			</van-col>
 
 		</van-row>
 		<!-- 聊天列表 -->
 		<van-row style="width: 100%; margin-top: 1rem;">
-			<van-row v-for="(item,index) in chatData" :key="item.msgid" style="width: 100%; margin-top: 1rem;">
-				<van-col span="4">
-					<van-image round width="2rem" height="2rem" fit="cover" :src="item.avatar" />
-				</van-col>
-				<van-col span="14">
-					<van-row>
-						<text>{{item.name}}</text>
-					</van-row>
-					<van-row>
-						<text>{{item.msg}}</text>
-					</van-row>
-				</van-col>
-				<van-col span="6">
-					<text style="font-size: small;">{{item.time}}</text>
-				</van-col>
-			</van-row>
+			<div v-for="item in chatData" :key="item.msgid">
+				<div class="list-item">
+					<div class="list-item-left">
+						<van-image round width="2rem" height="2rem" fit="cover" :src="item.avatar" />
+					</div>
+					<div class="list-item-middle">
+						<div class="list-item-name">{{item.name}}</div>
+						<div class="list-item-msg">{{item.msg}}</div>
+					</div>
+					<div class="list-item-right">{{item.time}}</div>
+				</div>
+			</div>
 		</van-row>
 		<van-dialog id="van-dialog" />
 	</view>
@@ -97,6 +93,38 @@
 						msg: "hello",
 						time: "22/03/19 22:23"
 					},
+					{
+						msgid: "123456",
+						avatar: "/static/circle.png",
+						name: "总想",
+						userid: "1152420971",
+						msg: "hello",
+						time: "22/03/19 22:23"
+					},
+					{
+						msgid: "123456",
+						avatar: "/static/circle.png",
+						name: "总想",
+						userid: "1152420971",
+						msg: "hello",
+						time: "22/03/19 22:23"
+					},
+					{
+						msgid: "123456",
+						avatar: "/static/circle.png",
+						name: "总想",
+						userid: "1152420971",
+						msg: "hello",
+						time: "22/03/19 22:23"
+					},
+					{
+						msgid: "123456",
+						avatar: "/static/circle.png",
+						name: "总想",
+						userid: "1152420971",
+						msg: "hello",
+						time: "22/03/19 22:23"
+					},
 				]
 			}
 		},
@@ -113,9 +141,9 @@
 						// on cancel
 					});
 			},
-			handleFriendList(){
+			handleFriendList() {
 				uni.navigateTo({
-					url:"../../basic/friendList/friendList"
+					url: "../../basic/friendList/friendList"
 				})
 			}
 		}
@@ -128,5 +156,64 @@
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
+	}
+
+	.van-dropdown-menu {
+		box-shadow: 0 0rpx 0rpx 0 rgba(0, 0, 0, 0.21) !important;
+	}
+
+	.van-dropdown-menu__item {
+		flex: 0.5 !important;
+	}
+
+	/* flex布局 */
+	.list-item {
+		background-color: white;
+		margin: 0 0 10px;
+		max-width: 1024px;
+		display: flex;
+		flex-direction: row;
+		flex-wrap: nowrap;
+		height: 80px;
+	}
+
+	.list-item-left {
+		width: 20%;
+		margin: 5px;
+		display: flex;
+		vertical-align: middle;
+		justify-content: center;
+		text-align: center;
+		color: white;
+	}
+
+	.list-item-middle {
+		width: 50%;
+		display: flex;
+		flex-direction: column;
+		text-align: left;
+		color: black;
+	}
+	
+	.list-item-name {
+		font-size: 18px;
+		margin: 5px;
+	}
+	
+	.list-item-msg {
+		font-size: 13px;
+		margin: 5px;
+	}
+
+	.list-item-right {
+		display: flex;
+		width: 30%;
+		margin: 5px;
+		vertical-align: middle;
+		justify-content: center;
+		text-align: right;
+		line-height: 50px;
+		color: black;
+		font-size: 10px;
 	}
 </style>
