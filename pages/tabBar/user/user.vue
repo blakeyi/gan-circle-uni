@@ -1,49 +1,49 @@
 <template>
 	<view class="content">
 		<!-- 个人介绍 -->
-		<van-row gutter="20" style="width: 100%; margin-top: 2rem;">
-			<!-- 头像 -->
-			<van-col span="6" offset="1">
-				<van-image round width="3rem" height="3rem" fit="cover" src="/static/circle.png" />
-			</van-col>
-			<!-- 名称和状态 -->
-			<van-col span="10">
-				<van-row>总想</van-row>
-				<van-row>
-					<van-cell is-link title="积极营业" link-type="navigateTo" :border="false"
-						url="/pages/basic/lifeStatus/lifeStatus">
-					</van-cell>
-				</van-row>
-			</van-col>
-			<!-- 主页跳转 -->
-			<van-col span="7">
-				<van-cell is-link title="主页" link-type="navigateTo" :border="false"
-					url="/pages/basic/introduce/introduce"></van-cell>
+		<van-row gutter="20" style="width: 100%; margin-top: 0.5rem;">
+			<van-col span="22" offset="1">
+				<div class="van-doc-card" style="display:flex; flex-direction: row; height:4rem; justify-content: space-around;">
+					<!-- 头像 -->
+					<van-image round width="3rem" height="3rem" fit="cover" src="/static/circle.png" style="display: flex; align-self: flex-start;"/>
+					<!-- 名称和状态 -->
+					<div style="display:flex; flex-direction: column; justify-content: flex-start;">
+						<text>{{userData.name}}</text>
+						<van-cell is-link title="积极营业" link-type="navigateTo" :border="false"
+							url="/pages/basic/lifeStatus/lifeStatus">
+						</van-cell>
+					</div>
+					<!-- 主页跳转 -->
+					<van-cell is-link title="主页" link-type="navigateTo" :border="false"
+						url="/pages/basic/introduce/introduce"></van-cell>
+				</div>
 			</van-col>
 		</van-row>
 		<!-- 数据记录 -->
 		<van-row style="width: 100%;">
 			<van-col span="22" offset="1">
-				<van-grid column-num="4" :border="false">
-					<van-grid-item use-slot v-for="item in dataRecords" :key="item.label">
-						<van-row>{{item.value}}</van-row>
-						<van-row>{{item.label}}</van-row>
-					</van-grid-item>
-				</van-grid>
+				<div class="van-doc-card" >
+					<van-grid column-num="4" :border="false">
+						<van-grid-item use-slot v-for="item in dataRecords" :key="item.label">
+							<van-row>{{item.value}}</van-row>
+							<van-row style="font-size: 14px;">{{item.label}}</van-row>
+						</van-grid-item>
+					</van-grid>
+				</div>
 			</van-col>
 		</van-row>
 		<!-- 脱单服务 -->
 		<van-row style="width: 100%; margin-top: 1rem;">
-			<van-col span="11" offset="1">
-				<div class="van-doc-card">
-					<van-cell is-link title="我的狗粮" :label="userData.moneyNum" link-type="navigateTo" :border="false"
-						url="/pages/basic/shop/shop"></van-cell>
-				</div>
-			</van-col>
-			<van-col span="11" offset="1">
-				<div class="van-doc-card">
-					<van-cell is-link title="我的动态" :label="userData.articleNum" link-type="navigateTo" :border="false"
-						url="/pages/basic/lifeStatus/lifeStatus"></van-cell>
+			<van-col span="22" offset="1">
+				<div style="display:flex; flex-direction: row; justify-content: space-between;">
+					<div class="van-doc-card" style="width: 40%;">
+						<van-cell is-link title="我的狗粮" :label="userData.moneyNum" link-type="navigateTo" :border="false"
+							url="/pages/basic/shop/shop"></van-cell>
+					</div>
+					<div class="van-doc-card" style="width: 40%;">
+						<van-cell is-link title="我的动态" :label="userData.articleNum" link-type="navigateTo"
+							:border="false" url="/pages/basic/lifeStatus/lifeStatus"></van-cell>
+					</div>
 				</div>
 			</van-col>
 		</van-row>
@@ -96,12 +96,12 @@
 			</van-col>
 		</van-row>
 		<!-- UID显示 -->
-		<van-row style="width: 100%" >
+		<van-row style="width: 100%">
 			<van-col span="8" offset="8">
-			<text style="text-align:center">UID:{{userData.uid}}</text>
+				<text style="text-align:center">UID:{{userData.uid}}</text>
 			</van-col>
 		</van-row>
-		
+
 		<!-- 分享界面 -->
 		<van-share-sheet :show="showShare" title="立即分享给好友" :options="options" @select="onShareSelect"
 			@close="showShare=false" />
@@ -113,13 +113,14 @@
 		data() {
 			return {
 				userData: {
+					name:"总想",
 					intesting: 0,
 					focus: 0,
 					fans: 0,
 					recent: 0,
 					moneyNum: 100,
 					articleNum: 0,
-					uid:"12345"
+					uid: "12345"
 				},
 				active: 0,
 				showShare: false,
@@ -186,7 +187,7 @@
 				console.log(111)
 				this.showShare = true
 			},
-			onShareSelect(value){
+			onShareSelect(value) {
 				console.log(value)
 			}
 		}
@@ -194,13 +195,6 @@
 </script>
 
 <style>
-	.content {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-	}
-
 	.logo {
 		height: 200rpx;
 		width: 200rpx;

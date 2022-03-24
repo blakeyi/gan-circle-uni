@@ -1,17 +1,21 @@
 <template>
 	<view class="content">
-			<!-- 功能栏 -->
-			<van-row gutter="20" style="width: 100%; margin-top: 1rem;">
-				<van-col span="4">
-				<van-button icon="replay" plain round type="default" size="mini" @click="handleReplay">回看
-				</van-button>
-			</van-col>
-			<van-col span="6">
-				<van-button icon="setting-o" plain round type="default" size="mini" @click="handlePerfence">偏好设置
-				</van-button>
-			</van-col>
-			<van-col span="4">
-				<van-button icon="flag-o" plain round type="default" size="mini" @click="handleClockIn">签到</van-button>
+		<!-- 功能栏 -->
+		<van-row gutter="20" style="width: 100%; margin-top: 1rem;">
+			<van-col span="22" offset="1">
+				<div class="van-doc-card">
+					<van-col span="4">
+						<van-button icon="replay" plain round type="default" size="mini" @click="handleReplay">回看
+						</van-button>
+					</van-col>
+					<van-col span="6">
+						<van-button icon="setting-o" plain round type="default" size="mini" @click="handlePerfence">偏好设置
+						</van-button>
+					</van-col>
+					<van-col span="4">
+						<van-button icon="flag-o" plain round type="default" size="mini" @click="handleClockIn">签到</van-button>
+					</van-col>
+				</div>
 			</van-col>
 		</van-row>
 		<!-- 单身广场 -->
@@ -54,7 +58,7 @@
 					</van-row>
 
 					<!-- 动态图标 -->
-					<van-row gutter="20" style="width: 100%;" >
+					<van-row gutter="20" style="width: 100%;">
 						<van-col span="6" offset="10">
 							<circle @click.native="handleEnterSquare"></circle>
 						</van-col>
@@ -85,23 +89,23 @@
 		methods: {
 			handleReplay() {
 				uni.navigateTo({
-					url:"/pages/basic/replay/replay"
+					url: "/pages/basic/replay/replay"
 				})
 			},
 			handlePerfence() {
 				uni.navigateTo({
-					url:"/pages/basic/matching/matching"
+					url: "/pages/basic/matching/matching"
 				})
 			},
 			handleClockIn() {
 				uni.navigateTo({
-					url:"/pages/basic/clockIn/clockIn"
+					url: "/pages/basic/clockIn/clockIn"
 				})
 			},
-			handleEnterSquare(){
+			handleEnterSquare() {
 				console.log(1111)
 				uni.navigateTo({
-					url:"/pages/basic/square/square"
+					url: "/pages/basic/square/square"
 				})
 			}
 		}
