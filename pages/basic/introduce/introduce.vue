@@ -163,7 +163,25 @@
 			</van-col>
 
 		</van-row>
+		<!-- 个人动态 -->
+		<van-row gutter="20" style="width: 100%;">
+			<van-col span="22" offset="1">
+				<div class="van-doc-card" style="display: flex; flex-direction: column;">
+					<div style="display: flex; flex-direction: row; justify-content: space-between;">
+						<text>个人动态({{userInfo.moments.num}})</text>
+						<van-icon name="arrow" @click="handleViewMoments"/>
+					</div>
+					<div v-if="userInfo.moments.num > 0" style="display: flex; flex-direction: row; flex-wrap: wrap;">
+						<div v-for="(item, index) in userInfo.moments.urls" :key="index" style="padding: 10px;">
+							<van-image width="50" height="50" radius="5" style="box-shadow: 0 5px 8px #ebedf0;"
+								fit="cover" :src="item" @click="handleViewMoments">
+							</van-image>
+						</div>
+					</div>
+				</div>
+			</van-col>
 
+		</van-row>
 		<!-- 关于我 -->
 		<van-row gutter="20" style="width: 100%;">
 		</van-row>
@@ -213,7 +231,12 @@
 						}
 					},
 					cover: "/static/girl.jpg", // 封面照片
-					photos: ["/static/girl.jpg", "/static/girl.jpg"] // 其他照片
+					photos: ["/static/girl.jpg", "/static/girl.jpg"], // 其他照片
+					moments: {
+						num: 10,
+						urls: ["/static/girl.jpg", "/static/girl.jpg"] // 此处最多展示最近四条动态
+
+					} // 动态数
 				},
 				certExpand: false, // 认证详情默认不展开
 
@@ -225,20 +248,24 @@
 			})
 		},
 		methods: {
-			
-			uploadImg(){
+			handleViewMoments(){
+				uni.navigateTo({
+					url:"/pages/basic/moments/moments"
+				})
+			},
+			uploadImg() {
 				let that = this
 				uni.chooseImage({
 					count: 1, //默认9
 					sizeType: ['original', 'compressed'], //可以指定是原图还是压缩图，默认二者都有
 					sourceType: ['album'], //从相册选择
-					success: function (res) {
+					success: function(res) {
 						console.log(JSON.stringify(res.tempFilePaths));
 						that.userInfo.photos.push(res.tempFilePaths[0])
 					}
 				});
 			},
-			deleteImg(url){
+			deleteImg(url) {
 				this.userInfo.photos.forEach((value, index, arr) => {
 					if (url == value) {
 						arr.splice(index, 1)
