@@ -1,11 +1,13 @@
 <template>
-	<view class="content">
+	<view class="content" style="height: 100vh;">
 		<!-- 个人介绍 -->
 		<van-row gutter="20" style="width: 100%; margin-top: 0.5rem;">
 			<van-col span="22" offset="1">
-				<div class="van-doc-card" style="display:flex; flex-direction: row; height:4rem; justify-content: space-around;">
+				<div class="van-doc-card"
+					style="display:flex; flex-direction: row; height:4rem; justify-content: space-around;">
 					<!-- 头像 -->
-					<van-image round width="3rem" height="3rem" fit="cover" src="/static/circle.png" style="display: flex; align-self: flex-start;"/>
+					<van-image round width="3rem" height="3rem" fit="cover" src="/static/circle.png"
+						style="display: flex; align-self: flex-start;" />
 					<!-- 名称和状态 -->
 					<div style="display:flex; flex-direction: column; justify-content: flex-start;">
 						<text>{{userData.name}}</text>
@@ -22,7 +24,7 @@
 		<!-- 数据记录 -->
 		<van-row style="width: 100%;">
 			<van-col span="22" offset="1">
-				<div class="van-doc-card" >
+				<div class="van-doc-card">
 					<van-grid column-num="4" :border="false">
 						<van-grid-item use-slot v-for="item in dataRecords" :key="item.label">
 							<van-row>{{item.value}}</van-row>
@@ -97,8 +99,11 @@
 		</van-row>
 		<!-- UID显示 -->
 		<van-row style="width: 100%">
-			<van-col span="8" offset="8">
-				<text style="text-align:center">UID:{{userData.uid}}</text>
+			<van-col span="8" offset="10" >
+				<div @click="handleCopyUid">
+					<text style="text-align:center">UID:{{userData.uid}}</text>
+					<van-image round width="1rem" height="1rem" fit="cover" src="/static/copy.png" />
+				</div>
 			</van-col>
 		</van-row>
 
@@ -113,7 +118,7 @@
 		data() {
 			return {
 				userData: {
-					name:"总想",
+					name: "总想",
 					intesting: 0,
 					focus: 0,
 					fans: 0,
@@ -189,7 +194,15 @@
 			},
 			onShareSelect(value) {
 				console.log(value)
-			}
+			},
+			handleCopyUid() {
+				uni.setClipboardData({
+					data: this.userData.uid,
+					success: function() {
+						console.log('success');
+					}
+				});
+			},
 		}
 	}
 </script>

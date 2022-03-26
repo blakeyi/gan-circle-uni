@@ -6,10 +6,10 @@
 				"navigationBarTitleText": "uni-app"
 			}
 		},{
-		    "path" : "pages/basic/moments/moments",
+		    "path" : "pages/basic/editTag/editTag",
 		    "style" :                                                                                    
 		    {
-		        "navigationBarTitleText": "",
+		        "navigationBarTitleText": "我的标签",
 		        "enablePullDownRefresh": false
 		    }
 		    
@@ -20,6 +20,29 @@
 				"enablePullDownRefresh": false
 			}
 		
+		},{
+		    "path" : "pages/basic/editDesc/editDesc",
+		    "style" :                                                                                    
+		    {
+		        "navigationBarTitleText": "编辑用户资料卡",
+		        "enablePullDownRefresh": false
+		    }
+		    
+		},{
+			"path": "pages/basic/square/square",
+			"style": {
+				"navigationBarTitleText": "单身广场",
+				"enablePullDownRefresh": false
+			}
+		
+		},{
+		    "path" : "pages/basic/moments/moments",
+		    "style" :                                                                                    
+		    {
+		        "navigationBarTitleText": "",
+		        "enablePullDownRefresh": false
+		    }
+		    
 		},
 		{
 			"path": "pages/tabBar/recommend/recommend",
@@ -135,14 +158,7 @@
 				"enablePullDownRefresh": false
 			}
 
-		}, {
-			"path": "pages/basic/square/square",
-			"style": {
-				"navigationBarTitleText": "",
-				"enablePullDownRefresh": false
-			}
-
-		}, {
+		},  {
 			"path": "pages/basic/paperAirplane/paperAirplane",
 			"style": {
 				"navigationBarTitleText": "",
@@ -179,6 +195,8 @@
 
 		}
 	    
+        
+
     ],
 
 	"globalStyle": {
@@ -197,11 +215,13 @@
 			"van-grid-item": "/wxcomponents/vant/dist/grid-item/index",
 			"van-icon": "/wxcomponents/vant/dist/icon/index",
 			"van-tab": "/wxcomponents/vant/dist/tab/index",
+			"van-tag": "/wxcomponents/vant/dist/tag/index",
 			"van-tabs": "/wxcomponents/vant/dist/tabs/index",
 			"van-dialog": "/wxcomponents/vant/dist/dialog/index",
 			"van-dropdown-menu": "/wxcomponents/vant/dist/dropdown-menu/index",
 			"van-dropdown-item": "/wxcomponents/vant/dist/dropdown-item/index",
 			"van-share-sheet": "/wxcomponents/vant/dist/share-sheet/index",
+			"van-field": "/wxcomponents/vant/dist/field/index",
 			"circle": "/wxcomponents/circle/circle"
 		}
 	},

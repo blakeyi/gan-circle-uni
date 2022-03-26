@@ -167,9 +167,10 @@
 		<van-row gutter="20" style="width: 100%;">
 			<van-col span="22" offset="1">
 				<div class="van-doc-card" style="display: flex; flex-direction: column;">
-					<div style="display: flex; flex-direction: row; justify-content: space-between;">
+					<div style="display: flex; flex-direction: row; justify-content: space-between;"
+						@click="handleViewMoments">
 						<text>个人动态({{userInfo.moments.num}})</text>
-						<van-icon name="arrow" @click="handleViewMoments"/>
+						<van-icon name="arrow" />
 					</div>
 					<div v-if="userInfo.moments.num > 0" style="display: flex; flex-direction: row; flex-wrap: wrap;">
 						<div v-for="(item, index) in userInfo.moments.urls" :key="index" style="padding: 10px;">
@@ -184,9 +185,51 @@
 		</van-row>
 		<!-- 关于我 -->
 		<van-row gutter="20" style="width: 100%;">
+			<van-col span="22" offset="1">
+				<div class="van-doc-card" style="display: flex; flex-direction: column;">
+					<div style="display: flex; flex-direction: row; justify-content: space-between;"
+						@click="handleViewMoments">
+						<text>关于我</text>
+					</div>
+
+					<div class="infoDesc">
+						<div v-for="(item, index) in userInfo.introduce" :key="index">
+							<div style="display: flex; flex-direction: row; justify-content: space-between;">
+								<div class="title">
+									<div class="dot"></div>
+									<text>{{item.title}}</text>
+								</div>
+								<div @click="handleEditDesc(item)">
+									<text style="color: #969599; font-size: 16px;">编辑</text>
+									<van-icon name="arrow" />
+								</div>
+							</div>
+							<div class="introduce">
+								{{item.desc}}
+							</div>
+						</div>
+					</div>
+				</div>
+			</van-col>
 		</van-row>
 		<!-- 个人标签 -->
 		<van-row gutter="20" style="width: 100%;">
+			<van-col span="22" offset="1">
+				<div class="van-doc-card" style="display: flex; flex-direction: column;">
+					<div style="display: flex; flex-direction: row; justify-content: space-between;">
+						<text>我的标签</text>
+						<div @click="handleEditTag">
+							<text style="color: #969599; font-size: 16px;">编辑</text>
+							<van-icon name="arrow" />
+						</div>
+					</div>
+					<div style="display: flex; flex-direction: row; justify-content: flex-start;">
+						<div v-for="(item, index) in userInfo.tags" :key="index" style="margin-left: 5rpx; padding: 5rpx;">
+							<van-tag round type="success" size="large" color="#F4F4FF" text-color="#6E6FFF">{{item}}</van-tag>
+						</div>
+					</div>
+				</div>
+			</van-col>
 		</van-row>
 	</view>
 </template>
@@ -236,7 +279,22 @@
 						num: 10,
 						urls: ["/static/girl.jpg", "/static/girl.jpg"] // 此处最多展示最近四条动态
 
-					} // 动态数
+					}, // 动态数
+					introduce: [{
+							title: "自我描述",
+							desc: "世事早已擦肩而过，我们又何必反复追忆，反复提起。是时候和昨天告别了，忘记一切，也" +
+								"原谅一切。是真的忘记，做到心平气和，在安稳的现世里，循规蹈矩的过日子。不再追求虚浮的奢华" +
+								"不再喜好俏丽的颜色，不再渴望热烈的爱情。只愿在简约的四季里，穿粗布素衣，和某个平淡的人，一\n同老去，相约白头。",
+						},
+						{
+							title: "家庭背景",
+							desc: "世事早已擦肩而过，我们又何必反复追忆，反复提起。是时候和昨天告别了，忘记一切，也" +
+								"原谅一切。是真的忘记，做到心平气和，在安稳的现世里，循规蹈矩的过日子。不再追求虚浮的奢华" +
+								"不再喜好俏丽的颜色，不再渴望热烈的爱情。只愿在简约的四季里，穿粗布素衣，和某个平淡的人，一\n同老去，相约白头。",
+						},
+					],
+					tags:['谦虚自律', '游戏', '足球', '成都']
+					
 				},
 				certExpand: false, // 认证详情默认不展开
 
@@ -248,9 +306,9 @@
 			})
 		},
 		methods: {
-			handleViewMoments(){
+			handleViewMoments() {
 				uni.navigateTo({
-					url:"/pages/basic/moments/moments"
+					url: "/pages/basic/moments/moments"
 				})
 			},
 			uploadImg() {
@@ -271,6 +329,19 @@
 						arr.splice(index, 1)
 						return
 					}
+				})
+			},
+			handleEditDesc(item) {
+				console.log(item)
+				uni.navigateTo({
+					url: "/pages/basic/editDesc/editDesc?data=" + JSON.stringify(item)
+				})
+			},
+			
+			handleEditTag() {
+				console.log(this.userInfo.tags)
+				uni.navigateTo({
+					url: "/pages/basic/editTag/editTag?data=" + JSON.stringify(this.userInfo.tags)
 				})
 			},
 			// An highlighted block
@@ -396,5 +467,44 @@
 
 	.add:hover {
 		color: blue;
+	}
+
+	/* 描述信息 */
+	.infoDesc {
+		display: flex;
+		flex-direction: column;
+		padding: 10rpx;
+		margin-top: 10rpx;
+	}
+
+	.dot {
+		/* < !--设置圆点的宽、高、背景颜色，再设置圆点半径所占百分比--> */
+		width: 10px;
+		height: 10px;
+		background-color: #6d71ee;
+		border-radius: 50%;
+		/* 		< !--设置圆点与其后面的内容水平显示--> */
+		display: inline-block;
+		margin-right: 5px;
+	}
+
+	.title {
+		color: #6d71ee;
+		border-style: solid;
+		border-radius: 35rpx;
+		border-color: #ededed;
+		background-color: #ededed;
+		padding: 10rpx;
+	}
+
+	.introduce {
+		display: flex;
+		width: 100%;
+		line-height: 20px;
+		padding: 5px;
+		overflow: hidden;
+		word-wrap: break-word;
+		word-break: break-all;
+		color: #363638;
 	}
 </style>

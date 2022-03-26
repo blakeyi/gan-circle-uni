@@ -1,5 +1,5 @@
 <template>
-	<view class="content">
+	<view class="content" style="background-color: #fefefe;">
 		<!-- 功能栏 -->
 		<van-row gutter="20" style="width: 100%; margin-top: 1rem;">
 			<van-col span="10" offset="1">
@@ -17,15 +17,18 @@
 			</van-col>
 		</van-row>
 		<van-row style="width: 100%; margin-top: 1rem;">
-			<van-col span="12">
-				<van-dropdown-menu :board="false">
-					<van-dropdown-item :value="value_chatType" :options="option_chatType" />
-				</van-dropdown-menu>
-			</van-col>
-			<van-col span="4" offset="8">
-				<van-button plain round size="mini" @click="handleFriendList" style="margin-top: 1rem;">好友列表</van-button>
-			</van-col>
-
+			<div style="display: flex; flex-direction: row; justify-content: space-between;">
+				<div style="width: 60%; margin-left: -1rem;">
+					<van-dropdown-menu :board="false">
+						<van-dropdown-item :value="value_chatType" :options="option_chatType" />
+					</van-dropdown-menu>
+				</div>
+				<div style="display: flex; flex-direction: row; justify-content: flex-end; align-items: center; width: 40%">
+					<van-button  plain round size="mini"style="margin-right: 1rem;" @click="handleFriendList">好友列表
+					</van-button>
+				</div>
+				
+			</div>
 		</van-row>
 		<!-- 聊天列表 -->
 		<van-row style="width: 100%; margin-top: 1rem;">
@@ -194,12 +197,12 @@
 		text-align: left;
 		color: black;
 	}
-	
+
 	.list-item-name {
 		font-size: 18px;
 		margin: 5px;
 	}
-	
+
 	.list-item-msg {
 		font-size: 13px;
 		margin: 5px;
