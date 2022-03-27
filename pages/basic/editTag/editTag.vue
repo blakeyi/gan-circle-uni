@@ -17,7 +17,7 @@
 			<van-tabs :active="curTab" @change="handleTabChg">
 				<div v-for="(item,index) in tagList" :key="index">
 					<van-tab :title="item.name">
-						<div style="display: flex; flex-direction: row; justify-content: flex-start;flex-wrap: wrap;">
+						<div style="display: flex; flex-direction: row; justify-content: flex-start;flex-wrap: wrap;align-content:flex-startss">
 							<div v-for="(item1, index1) in item.list" :key="index1"
 								@click="handleSelect(item.name, item1)" style="margin-left: 5rpx; padding: 15rpx;">
 								<van-tag v-if="item1.selected" round type="success" size="large" color="#F4F4FF"

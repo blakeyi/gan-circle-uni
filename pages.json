@@ -1,9 +1,24 @@
 {
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 		{
+		    "path" : "pages/basic/chat/chat",
+		    "style" :                                                                                    
+		    {
+		        "navigationBarTitleText": "",
+		        "enablePullDownRefresh": false
+		    }
+		    
+		},{
+			"path": "pages/basic/friendList/friendList",
+			"style": {
+				"navigationBarTitleText": "朋友列表",
+				"enablePullDownRefresh": false
+			}
+		
+		},{
 			"path": "pages/tabBar/user/user",
 			"style": {
-				"navigationBarTitleText": "uni-app"
+				"navigationBarTitleText": "我的"
 			}
 		},{
 		    "path" : "pages/basic/editTag/editTag",
@@ -39,7 +54,7 @@
 		    "path" : "pages/basic/moments/moments",
 		    "style" :                                                                                    
 		    {
-		        "navigationBarTitleText": "",
+		        "navigationBarTitleText": "圈儿",
 		        "enablePullDownRefresh": false
 		    }
 		    
@@ -47,21 +62,21 @@
 		{
 			"path": "pages/tabBar/recommend/recommend",
 			"style": {
-				"navigationBarTitleText": "",
+				"navigationBarTitleText": "推荐",
 				"enablePullDownRefresh": false
 			}
 
 		}, {
 			"path": "pages/tabBar/message/message",
 			"style": {
-				"navigationBarTitleText": "",
+				"navigationBarTitleText": "消息",
 				"enablePullDownRefresh": false
 			}
 
 		}, {
 			"path": "pages/tabBar/socialCircle/socialCircle",
 			"style": {
-				"navigationBarTitleText": "",
+				"navigationBarTitleText": "圈儿",
 				"enablePullDownRefresh": false
 			}
 
@@ -70,35 +85,35 @@
  {
 			"path": "pages/basic/lifeStatus/lifeStatus",
 			"style": {
-				"navigationBarTitleText": "",
+				"navigationBarTitleText": "状态",
 				"enablePullDownRefresh": false
 			}
 
 		}, {
 			"path": "pages/basic/certificate/certificate",
 			"style": {
-				"navigationBarTitleText": "",
+				"navigationBarTitleText": "认证",
 				"enablePullDownRefresh": false
 			}
 
 		}, {
 			"path": "pages/basic/matching/matching",
 			"style": {
-				"navigationBarTitleText": "",
+				"navigationBarTitleText": "匹配设置",
 				"enablePullDownRefresh": false
 			}
 
 		}, {
 			"path": "pages/basic/question/question",
 			"style": {
-				"navigationBarTitleText": "",
+				"navigationBarTitleText": "问题设置",
 				"enablePullDownRefresh": false
 			}
 
 		}, {
 			"path": "pages/basic/privacy/privacy",
 			"style": {
-				"navigationBarTitleText": "",
+				"navigationBarTitleText": "隐私说明",
 				"enablePullDownRefresh": false
 			}
 
@@ -186,17 +201,7 @@
 				"enablePullDownRefresh": false
 			}
 
-		}, {
-			"path": "pages/basic/friendList/friendList",
-			"style": {
-				"navigationBarTitleText": "",
-				"enablePullDownRefresh": false
-			}
-
 		}
-	    
-        
-
     ],
 
 	"globalStyle": {
@@ -217,6 +222,7 @@
 			"van-tab": "/wxcomponents/vant/dist/tab/index",
 			"van-tag": "/wxcomponents/vant/dist/tag/index",
 			"van-tabs": "/wxcomponents/vant/dist/tabs/index",
+			"van-search": "/wxcomponents/vant/dist/search/index",
 			"van-dialog": "/wxcomponents/vant/dist/dialog/index",
 			"van-dropdown-menu": "/wxcomponents/vant/dist/dropdown-menu/index",
 			"van-dropdown-item": "/wxcomponents/vant/dist/dropdown-item/index",

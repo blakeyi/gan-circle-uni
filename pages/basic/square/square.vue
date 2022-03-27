@@ -57,9 +57,7 @@
 			}
 		},
 		onReady() {
-			uni.setNavigationBarTitle({
-				title: '单身广场'
-			})
+			
 		},
 		methods: {
 			handleEnterIntroduce() {

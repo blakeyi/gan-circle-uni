@@ -1,9 +1,9 @@
 <template>
-	<view class="content" style="height: 100vh;">
+	<view class="content">
 		<!-- 个人介绍 -->
 		<van-row gutter="20" style="width: 100%; margin-top: 0.5rem;">
 			<van-col span="22" offset="1">
-				<div class="van-doc-card"
+				<div 
 					style="display:flex; flex-direction: row; height:4rem; justify-content: space-around;">
 					<!-- 头像 -->
 					<van-image round width="3rem" height="3rem" fit="cover" src="/static/circle.png"

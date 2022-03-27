@@ -1,19 +1,17 @@
 <template>
 	<view class="content" style="height: 100vh;">
 		<!-- 功能栏 -->
-		<van-row gutter="20" style="width: 100%; margin-top: 1rem;">
+		<van-row gutter="20" style="width: 100%;">
 			<van-col span="22" offset="1">
-				<div class="van-doc-card">
-					<van-button style="padding: 1rem;" icon="replay" plain round type="default" size="mini"
-						@click="handleReplay">回看
-					</van-button>
-					<van-button style="padding: 1rem;" icon="setting-o" plain round type="default" size="mini"
-						@click="handlePerfence">偏好设置
-					</van-button>
-					<van-button style="padding: 1rem;" icon="flag-o" plain round type="default" size="mini"
-						@click="handleClockIn">签到
-					</van-button>
-				</div>
+				<van-button style="padding: 0.5rem;" icon="replay" plain round type="default" size="mini"
+					@click="handleReplay">回看
+				</van-button>
+				<van-button style="padding: 0.5rem;" icon="setting-o" plain round type="default" size="mini"
+					@click="handlePerfence">偏好设置
+				</van-button>
+				<van-button style="padding: 0.5rem;" icon="flag-o" plain round type="default" size="mini"
+					@click="handleClockIn">签到
+				</van-button>
 			</van-col>
 		</van-row>
 		<!-- 单身广场 -->
@@ -47,7 +45,9 @@
 					<!-- 动态图标 -->
 					<div>
 						<circle @click.native="handleEnterSquare"></circle>
-						<div style="color:white; line-height: 5rem; height: 5rem; text-align:center; width:100%; margin-top: -10rem;" >进入单身广场</div>
+						<div
+							style="color:white; line-height: 5rem; height: 5rem; text-align:center; width:100%; margin-top: -10rem;">
+							进入单身广场</div>
 					</div>
 				</div>
 			</van-col>

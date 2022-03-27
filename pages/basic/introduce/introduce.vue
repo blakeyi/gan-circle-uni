@@ -344,8 +344,6 @@
 					url: "/pages/basic/editTag/editTag?data=" + JSON.stringify(this.userInfo.tags)
 				})
 			},
-			// An highlighted block
-			// 预览图片单张
 			previewImg(logourl) {
 				let _this = this;
 				let imgsArray = [];
@@ -354,36 +352,8 @@
 					current: 0,
 					urls: imgsArray
 				});
-			},
-			// 预览图片多张
-			previewImgs(index) {
-				let _this = this;
-				let imgsArray = [];
-				for (let i = 0; i < this.imgUrlList.length; i++) {
-					if (this.imgUrlList[i].videoUrl == "") {
-						imgsArray.push(this.imgUrlList[i].imgUrl);
-					}
-				}
-
-				// #ifdef MP
-				uni.previewImage({
-					current: index - 1,
-					urls: imgsArray,
-					indicator: 'number',
-					loop: true
-				});
-				// #endif
-
-				// #ifndef MP
-				uni.previewImage({
-					current: index - 1,
-					urls: imgsArray,
-					indicator: 'number',
-					loop: true
-				});
-				// #endif
-
-			},
+			}
+			
 		}
 	}
 </script>
