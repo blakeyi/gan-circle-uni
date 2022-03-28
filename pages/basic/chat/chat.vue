@@ -88,13 +88,21 @@
 						</div>
 					</div>
 					<div class="sendPanel" v-if="panelModel == 2">
-						<swiper class="slider" :current="emojiData.length-1">
-							<swiper-item v-for="(item, key) in emojiData" :key="key" class="slider-emoji"
-								:class="[key==emojiData.length-1?'lastbox':'']">
-								<text v-for="(emoji, index) in item" :key="index" @click="handleEmojiSel(emoji)"
-									class="slider-emoji-icon">{{ emoji }}</text>
+						<!-- 最近使用 -->
+						<div class="panelTool">
+
+						</div>
+						<swiper style="height: 70%; width: 100%; margin-left: 1rem;" :indicator-dots="indicatorDots"
+							indicator-color="rgba(0, 0, 0, .3)" indicator-active-color="#07c15c">
+							<swiper-item v-for="(emoji, index) in emojisArray" :key="index">
+								<div v-for="(item, key) in emoji" :key="key">
+									<div class="emoji-common emoji-size-large" :class='item'
+										@click="handleEmojiSel(item)">
+									</div>
+								</div>
 							</swiper-item>
 						</swiper>
+
 					</div>
 				</div>
 
@@ -105,12 +113,20 @@
 
 
 <script>
-	import emoji from "../../../js_sdk/m-emoji/m-emoji_2.0.0/emoji.js";
+	import {
+		emojis
+	} from '../../../utils/emoji.js'
 	const HEIGHT_WITH_PANEL = "60vh"
 	const HEIGHT_WITHOUT_PANEL = "85vh"
 	export default {
 		data() {
 			return {
+				background: ['color1', 'color2', 'color3'],
+				indicatorDots: true,
+				autoplay: true,
+				interval: 2000,
+				duration: 500,
+
 				chatUser: null,
 				inputMsg: "",
 				updateList: true, // 更新列表
@@ -118,9 +134,10 @@
 				userData: {
 					avatar: "/static/boyAvatar.png"
 				},
-				emojiData: [], // emoji数组
+				indicatorDots: 0,
 				panelModel: 0, // 0 不显示, 1 显示图标, 2 显示emoji
 				curPos: "item0", // 当前滚动位置
+				bgImage: "",
 				listHeight: HEIGHT_WITHOUT_PANEL,
 				// sender 0-mine 1-your
 				chatList: [{
@@ -186,23 +203,16 @@
 						hasRead: true,
 						type: 0, // 0表示文字, 1表示图片, 2 表示视频
 					}
-				]
+				],
+				emojisArray: [], // 二维数组,一个里面24张图
+				emojis: emojis
 			}
 		},
 		mounted() {
-			console.log(1111, 'mounted')
+			console.log('mounted', emojis)
+			this.emojisArray = this.arrayChunk(emojis, 18)
+			console.log(this.emojisArray)
 			this.curPos = 'item' + (this.chatList.length - 1).toString()
-			console.log(emoji)
-			var page = Math.ceil(emoji.length / 21);
-			for (let i = 0; i < page; i++) {
-				console.log('page:', page)
-				this.emojiData[i] = [];
-				for (let k = 0; k < 21; k++) {
-					emoji[i * 21 + k] ? this.emojiData[i].push(emoji[i * 21 + k]) : ''
-				}
-			}
-			console.log(1111)
-			console.log(this.emojiData)
 		},
 		onLoad(url) {
 			console.log(url)
@@ -237,7 +247,7 @@
 					url: "/pages/basic/introduce/introduce"
 				})
 			},
-			handleEmojiSel(emoji){
+			handleEmojiSel(emoji) {
 				console.log(emoji)
 			},
 			handleSendPic() {
@@ -266,6 +276,17 @@
 					}
 				});
 			},
+
+			// size每组数组多少个，如：8
+			// array需要拆分的数组
+			arrayChunk(array, size) {
+				let data = []
+				for (let i = 0; i < array.length; i += size) {
+					data.push(array.slice(i, i + size))
+				}
+				return data
+			},
+
 			updateChatLine() {
 				this.updateList = false
 				this.$nextTick(function() {
@@ -300,6 +321,8 @@
 </script>
 
 <style lang="scss">
+	@import "/css/emoji.css";
+
 	.list {
 		display: flex;
 		flex-direction: row;
@@ -364,6 +387,15 @@
 		text-align: start;
 	}
 
+	.panel {
+		display: flex;
+		flex-direction: row;
+		justify-content: flex-start;
+		padding: 1rem;
+		height: 30%;
+		width: 100%;
+	}
+
 	.input-msg {
 		width: 100%;
 		height: 3rem;
@@ -376,9 +408,10 @@
 
 	.sendPanel {
 		display: flex;
-		flex-direction: row;
+		flex-direction: column;
 		flex-wrap: wrap;
-		justify-content: flex-start;
+		justify-content: center;
+		align-items: center;
 		height: 15rem;
 	}
 
@@ -406,25 +439,22 @@
 		margin-top: 1rem;
 	}
 
-	.slider {
-		width: 100%;
-		height: 15rem;
-
-		&-emoji {
-			width: 375;
-			flex-direction: row;
-			flex-wrap: wrap;
-			justify-content: center;
-
-			&-icon {
-				width: 53%;
-				text-align: center;
-				padding: 10.5 0;
-			}
-		}
+	.emoji-common {
+		height: 64x;
+		width: 64px;
+		margin: 4px;
+		background: url("https://www.blakeyi.cn/images/emoji_sprite.png") no-repeat;
 	}
 
-	.lastbox {
-		justify-content: flex-start;
+	.emoji-size-small {
+		zoom: 0.45;
+		display: inline-block;
+		vertical-align: middle
+	}
+
+	.emoji-size-large {
+		zoom: 0.8;
+		margin: 4px;
+		float: left;
 	}
 </style>
