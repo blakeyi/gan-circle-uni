@@ -1,6 +1,13 @@
 {
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 		{
+			"path": "pages/tabBar/recommend/recommend",
+			"style": {
+				"navigationBarTitleText": "推荐",
+				"enablePullDownRefresh": false
+			}
+		
+		},{
 		    "path" : "pages/basic/chat/chat",
 		    "style" :                                                                                    
 		    {
@@ -59,14 +66,7 @@
 		    }
 		    
 		},
-		{
-			"path": "pages/tabBar/recommend/recommend",
-			"style": {
-				"navigationBarTitleText": "推荐",
-				"enablePullDownRefresh": false
-			}
-
-		}, {
+		 {
 			"path": "pages/tabBar/message/message",
 			"style": {
 				"navigationBarTitleText": "消息",

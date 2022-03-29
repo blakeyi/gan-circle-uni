@@ -1,10 +1,17 @@
 <template>
 	<view class="content">
-		<scroll-view scroll-y="true" :scroll-top="scrollTop" :scroll-into-view="curPos" :style="'height:'+ listHeight">
+		<div v-if="showCamera">
+			<camera device-position="back" flash="off" binderror="error" style="width: 100%; height: 300px;"></camera>
+			<button type="primary" bindtap="takePhoto">拍照</button>
+			<view>预览</view>
+			<image mode="widthFix" :src="cameraPic"></image>
+		</div>
+		<scroll-view scroll-y="true" :scroll-top="scrollTop" :scroll-into-view="curPos" :style="'height:'+ listHeight"
+			@click="handleClosePanel">
 			<div v-for="(item,index) in chatList" :key="index" :id="'item'+ index" @click="hanleClickList">
 				<div class="list">
 					<div class="mine" v-if="item.sender == 0">
-						<div class="bubble-mine" v-if="item.type == 0">{{item.myMsg}}</div>
+						<div class="bubble-mine" v-if="item.type == 0" v-html="item.myMsg"></div>
 						<div class="bubble-mine" v-if="item.type == 1">
 							<van-image width="10rem" height="10rem" fit="cover" :src="item.picture"
 								@click="previewImg(item.picture)" />
@@ -18,13 +25,13 @@
 					<div class="your" v-if="item.sender == 1">
 						<van-image round width="3rem" height="3rem" fit="cover" :src="chatUser.avatar"
 							style="margin-top: 2rem;" @click="handleViewInroduce(chatUser)" />
-						<div class="bubble-mine" v-if="item.type == 0">{{item.myMsg}}</div>
+						<div class="bubble-mine" v-if="item.type == 0" v-html="item.yourMsg"></div>
 						<div class="bubble-mine" v-if="item.type == 1">
 							<van-image width="10rem" height="10rem" fit="cover" :src="item.picture"
 								@click="previewImg(item.picture)" />
 						</div>
-						<div class="bubble-mine" v-if="item.type == 2">{{item.myMsg}}</div>
-						<div class="bubble-mine" v-if="item.type == 3">{{item.myMsg}}</div>
+						<div class="bubble-mine" v-if="item.type == 2">{{item.yourMsg}}</div>
+						<div class="bubble-mine" v-if="item.type == 3">{{item.yourMsg}}</div>
 					</div>
 				</div>
 			</div>
@@ -36,7 +43,9 @@
 					<van-cell-group style="width: 50%;">
 						<van-field :value="inputMsg" center clearable placeholder="主动一点,让故事发生" use-button-slot
 							@change="handleTextChg">
-							<van-icon slot="right-icon" name="smile-o" size="2rem" style="margin-right: 1rem;"
+							<van-icon v-if="panelModel == 2" slot="right-icon" name="smile-o" size="2rem"
+								color="#6d71ee" style="margin-right: 1rem;" @click="handleClosePanel" />
+							<van-icon v-else slot="right-icon" name="smile-o" size="2rem" style="margin-right: 1rem;"
 								@click="handleShowEmoji" />
 							<van-icon v-if="inputMsg.length === 0" slot="right-icon" name="add-o" size="2rem"
 								@click="handleShowMore" />
@@ -51,7 +60,7 @@
 							</div>
 							<text>照片</text>
 						</div>
-						<div class="panelItem">
+						<div class="panelItem" @click="HandleTakePhoto">
 							<div class="panelItem-img">
 								<van-image width="3rem" height="3rem" style="margin-top: 1rem;" fit="cover"
 									src="/static/camera.png" />
@@ -108,6 +117,7 @@
 
 			</van-col>
 		</van-row>
+
 	</view>
 </template>
 
@@ -139,6 +149,7 @@
 				curPos: "item0", // 当前滚动位置
 				bgImage: "",
 				listHeight: HEIGHT_WITHOUT_PANEL,
+				showCamera:false, //控制摄像头显示
 				// sender 0-mine 1-your
 				chatList: [{
 						myMsg: "你好, 你是哪里的人呀",
@@ -205,7 +216,8 @@
 					}
 				],
 				emojisArray: [], // 二维数组,一个里面24张图
-				emojis: emojis
+				emojis: emojis,
+				cameraPic:""
 			}
 		},
 		mounted() {
@@ -229,6 +241,11 @@
 			hanleClickList() {
 				this.listHeight = HEIGHT_WITH_PANEL
 			},
+			handleClosePanel() {
+				this.panelModel = 0
+				this.listHeight = HEIGHT_WITHOUT_PANEL
+				this.updateChatLine()
+			},
 			handleShowEmoji() {
 				this.panelModel = 2
 				this.listHeight = HEIGHT_WITH_PANEL
@@ -249,13 +266,27 @@
 			},
 			handleEmojiSel(emoji) {
 				console.log(emoji)
+				this.inputMsg += `[${emoji}]`
+			},
+			replaceEmoji: function(content) {
+				//[]需要转义,加？可以最小匹配，不加则为贪婪匹配
+				var temp = content.replace(/\[.*?\]/g, function(word) {
+					if (word.search("emoji") != -1) {
+						// 如果不是emoji则不处理
+						const type = word.substring(7, word.length - 1);
+						return '<div class="emoji-common emoji-' + type + ' emoji-size-small"></div>';
+					}
+					return word;
+
+				});
+				return temp;
 			},
 			handleSendPic() {
 				let that = this
 				uni.chooseImage({
 					count: 9, //默认9
 					sizeType: ['original', 'compressed'], //可以指定是原图还是压缩图，默认二者都有
-					sourceType: ['album'], //从相册选择
+					sourceType: ['album', 'camera'], //从相册选择
 					success: function(res) {
 						if (Array.isArray(res.tempFilePaths)) {
 							console.log(12344)
@@ -276,7 +307,22 @@
 					}
 				});
 			},
-
+			takePhoto(){
+				let camera = uni.createCameraContext() //创建照相机对象
+				console.log(camera)
+				camera.takePhoto({ //实现拍照功能
+					quality: 'high', //high 高质量成像、 normal 普通质量、row 低质量
+					success: (res) => {
+						console.log(res)
+						this.cameraPic = res.tempImagePath
+						this.showCamera = false
+					}
+				})
+			},
+			HandleTakePhoto() {
+				this.showCamera = true
+				
+			},
 			// size每组数组多少个，如：8
 			// array需要拆分的数组
 			arrayChunk(array, size) {
@@ -296,8 +342,9 @@
 			},
 			handleSendMsg() {
 				console.log(123)
+				let temp = this.replaceEmoji(this.inputMsg)
 				this.chatList.push({
-					myMsg: this.inputMsg,
+					myMsg: temp,
 					yourMsg: "",
 					sender: 0,
 					hasRead: false,
@@ -408,9 +455,9 @@
 
 	.sendPanel {
 		display: flex;
-		flex-direction: column;
+		flex-direction: row;
 		flex-wrap: wrap;
-		justify-content: center;
+		justify-content: flex-start;
 		align-items: center;
 		height: 15rem;
 	}
@@ -418,11 +465,11 @@
 	.panelItem {
 		display: flex;
 		flex-direction: column;
-		justify-content: center;
+		justify-content: space-around;
 		align-items: center;
 		height: 5rem;
 		width: 5rem;
-		margin-top: 1rem;
+		margin-top: 0.5rem;
 		margin-left: 1rem;
 	}
 
@@ -433,7 +480,7 @@
 		align-items: flex-start;
 		height: 3rem;
 		width: 3rem;
-		padding: 1rem;
+		padding: 0.5rem;
 		background-color: #ededed;
 		border-radius: 10rpx;
 		margin-top: 1rem;

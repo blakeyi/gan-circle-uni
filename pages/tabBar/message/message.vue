@@ -34,10 +34,10 @@
 		<van-row style="width: 100%; margin-top: 1rem;">
 			<div v-for="item in chatData" :key="item.msgid">
 				<div class="list-item">
-					<div class="list-item-left">
+					<div class="list-item-left" @click="handleViewInroduce(userData)">
 						<van-image round width="2rem" height="2rem" fit="cover" :src="item.avatar" />
 					</div>
-					<div class="list-item-middle">
+					<div class="list-item-middle" @click="handleEnterChat(item)">
 						<div class="list-item-name">{{item.name}}</div>
 						<div class="list-item-msg">{{item.msg}}</div>
 					</div>
@@ -144,11 +144,22 @@
 						// on cancel
 					});
 			},
+			handleViewInroduce(user) {
+				uni.navigateTo({
+					url: "/pages/basic/introduce/introduce"
+				})
+			},
 			handleFriendList() {
 				uni.navigateTo({
 					url: "../../basic/friendList/friendList"
 				})
-			}
+			},
+			handleEnterChat(user){
+				console.log(user)
+				uni.navigateTo({
+					url: "/pages/basic/chat/chat?data=" + JSON.stringify(user)
+				})
+			},
 		}
 	}
 </script>
