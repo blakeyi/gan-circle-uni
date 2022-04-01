@@ -1,88 +1,84 @@
 {
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 		{
-			"path": "pages/tabBar/recommend/recommend",
-			"style": {
-				"navigationBarTitleText": "推荐",
-				"enablePullDownRefresh": false
-			}
-		
-		},{
-		    "path" : "pages/basic/chat/chat",
-		    "style" :                                                                                    
-		    {
-		        "navigationBarTitleText": "",
-		        "enablePullDownRefresh": false
-		    }
-		    
-		},{
-			"path": "pages/basic/friendList/friendList",
-			"style": {
-				"navigationBarTitleText": "朋友列表",
-				"enablePullDownRefresh": false
-			}
-		
-		},{
-			"path": "pages/tabBar/user/user",
-			"style": {
-				"navigationBarTitleText": "我的"
-			}
-		},{
-		    "path" : "pages/basic/editTag/editTag",
-		    "style" :                                                                                    
-		    {
-		        "navigationBarTitleText": "我的标签",
-		        "enablePullDownRefresh": false
-		    }
-		    
-		},{
-			"path": "pages/basic/introduce/introduce",
-			"style": {
-				"navigationBarTitleText": "用户主页",
-				"enablePullDownRefresh": false
-			}
-		
-		},{
-		    "path" : "pages/basic/editDesc/editDesc",
-		    "style" :                                                                                    
-		    {
-		        "navigationBarTitleText": "编辑用户资料卡",
-		        "enablePullDownRefresh": false
-		    }
-		    
-		},{
-			"path": "pages/basic/square/square",
-			"style": {
-				"navigationBarTitleText": "单身广场",
-				"enablePullDownRefresh": false
-			}
-		
-		},{
-		    "path" : "pages/basic/moments/moments",
-		    "style" :                                                                                    
-		    {
-		        "navigationBarTitleText": "圈儿",
-		        "enablePullDownRefresh": false
-		    }
-		    
-		},
-		 {
-			"path": "pages/tabBar/message/message",
-			"style": {
-				"navigationBarTitleText": "消息",
-				"enablePullDownRefresh": false
-			}
-
-		}, {
 			"path": "pages/tabBar/socialCircle/socialCircle",
 			"style": {
 				"navigationBarTitleText": "圈儿",
 				"enablePullDownRefresh": false
 			}
 
-		}, 
+		}, {
+			"path": "pages/tabBar/recommend/recommend",
+			"style": {
+				"navigationBarTitleText": "推荐",
+				"enablePullDownRefresh": false
+			}
 
- {
+		}, {
+			"path": "pages/basic/chat/chat",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/basic/friendList/friendList",
+			"style": {
+				"navigationBarTitleText": "朋友列表",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/tabBar/user/user",
+			"style": {
+				"navigationBarTitleText": "我的"
+			}
+		}, {
+			"path": "pages/basic/editTag/editTag",
+			"style": {
+				"navigationBarTitleText": "我的标签",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/basic/introduce/introduce",
+			"style": {
+				"navigationBarTitleText": "用户主页",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/basic/editDesc/editDesc",
+		 "style": {
+				"navigationBarTitleText": "编辑用户资料卡",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/basic/square/square",
+			"style": {
+				"navigationBarTitleText": "单身广场",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/basic/moments/moments",
+			"style": {
+				"navigationBarTitleText": "圈儿",
+				"enablePullDownRefresh": false
+			}
+
+		},
+		{
+			"path": "pages/tabBar/message/message",
+			"style": {
+				"navigationBarTitleText": "消息",
+				"enablePullDownRefresh": false
+			}
+
+		},
+
+		{
 			"path": "pages/basic/lifeStatus/lifeStatus",
 			"style": {
 				"navigationBarTitleText": "状态",
@@ -173,7 +169,7 @@
 				"enablePullDownRefresh": false
 			}
 
-		},  {
+		}, {
 			"path": "pages/basic/paperAirplane/paperAirplane",
 			"style": {
 				"navigationBarTitleText": "",
@@ -202,6 +198,15 @@
 			}
 
 		}
+	    ,{
+            "path" : "pages/basic/otherMoment/otherMoment",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
 
 	"globalStyle": {
