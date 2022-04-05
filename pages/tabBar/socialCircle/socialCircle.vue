@@ -90,8 +90,7 @@
 								</div>
 								<div class="publishTime">{{getDateDiff(item.publishTime)}}</div>
 								<div class="publishTag">
-									<van-image width="1.5rem" height="1.5rem" style="margin-top: 0.2rem;" fit="cover"
-										src="/static/topic.png">
+									<van-image width="1rem" height="1rem" fit="cover" src="/static/topic.png">
 									</van-image>
 									<div>{{item.publishTag}}</div>
 								</div>
@@ -107,7 +106,8 @@
 										<div
 											style="display: flex; width: 40%; height: 2rem; justify-content: flex-start;">
 											<van-icon name="chat-o" color="#6d71ee" />
-											<div style="width: 30%; height: 2rem; line-height: 2rem;" @click="handleEnterMoment(item)">
+											<div style="width: 30%; height: 2rem; line-height: 2rem;"
+												@click="handleEnterMoment(item)">
 												{{item.status.comments}}
 											</div>
 										</div>
@@ -118,16 +118,17 @@
 									</div>
 
 								</div>
-								<div class="comment" @click="handleEnterMoment(item)">
+								<div class="comments" @click="handleEnterMoment(item)">
 									<div style="width: 100%;" v-if="index < 3" v-for="(comment,index) in item.comments"
 										:key="index">
-										<div>
+										<div class="comment">
 											<span class="comment-author">{{comment.userName}}:</span>
 											<span class="comment-content">{{comment.comment}}</span>
 											<br>
 										</div>
 									</div>
-									<div v-if="item.comments.length > 2" style="color:#6d71ee">查看全部{{item.comments.length}}条评论</div>
+									<div v-if="item.comments.length > 2" style="color:#6d71ee;font-size: 0.8rem;">
+										查看全部{{item.comments.length}}条评论</div>
 								</div>
 								<div class="divideLine"></div>
 							</div>
@@ -152,54 +153,105 @@
 				duration: 500,
 				// 动态
 				moments: [{
-					momentId: 1234,
-					publishTime: 1648826822000,
-					publishTag: "单身狗的日常",
-					comments: [{
-							userName: "blakeyi",
-							comment: "世事早已擦肩而过，我们又何必反复追忆，反复提起。是时候和昨天告别了"
+						momentId: 1234,
+						publishTime: 1648826822000,
+						publishTag: "单身狗的日常",
+						comments: [{
+								userName: "blakeyi",
+								comment: "世事早已擦肩而过，我们又何必反复追忆，反复提起。是时候和昨天告别了"
+							},
+							{
+								userName: "blakeyi",
+								comment: "世事早已擦肩而过，我们又何必反复追忆，反复提起。是时候和昨天告别了"
+							},
+							{
+								userName: "blakeyi",
+								comment: "世事早已擦肩而过，我们又何必反复追忆，反复提起。是时候和昨天告别了111111111111111111111"
+							},
+							{
+								userName: "blakeyi",
+								comment: "世事早已擦肩而过，我们又何必反复追忆，反复提起。是时候和昨天告别了"
+							},
+						],
+						status: {
+							likes: 12,
+							comments: 12,
 						},
-						{
-							userName: "blakeyi",
-							comment: "世事早已擦肩而过，我们又何必反复追忆，反复提起。是时候和昨天告别了"
+						content: "世事早已擦肩而过，我们又何必反复追忆，反复提起。是时候和昨天告别了，忘记一切，也" +
+							"原谅一切。是真的忘记，做到心平气和，在安稳的现世里，循规蹈矩的过日子。不再追求虚浮的奢华" +
+							"不再喜好俏丽的颜色，不再渴望热烈的爱情。只愿在简约的四季里，穿粗布素衣，和某个平淡的人，一\n同老去，相约白头。",
+						pictures: ["/static/pic1.jpeg", "/static/pic2.jpeg"],
+						userInfo: {
+							id: "12345",
+							avatar: "/static/boyAvatar.png",
+							name: "总想",
+							grade: "1", //等级
+							age: "26岁",
+							Constellation: "处女座",
+							gender: "男",
+							height: "165cm",
+							weight: "60kg",
+							birthYear: "95年",
+							profession: "老师",
+							company: "某某公司",
+							education: "本科",
+							university: "长沙理工大学",
+							city: "深圳",
+							province: "江西",
+							hometown: "宜春"
 						},
-						{
-							userName: "blakeyi",
-							comment: "世事早已擦肩而过，我们又何必反复追忆，反复提起。是时候和昨天告别了"
-						},
-						{
-							userName: "blakeyi",
-							comment: "世事早已擦肩而过，我们又何必反复追忆，反复提起。是时候和昨天告别了"
-						},
-					],
-					status: {
-						likes: 12,
-						comments: 12,
 					},
-					content: "世事早已擦肩而过，我们又何必反复追忆，反复提起。是时候和昨天告别了，忘记一切，也" +
-						"原谅一切。是真的忘记，做到心平气和，在安稳的现世里，循规蹈矩的过日子。不再追求虚浮的奢华" +
-						"不再喜好俏丽的颜色，不再渴望热烈的爱情。只愿在简约的四季里，穿粗布素衣，和某个平淡的人，一\n同老去，相约白头。",
-					pictures: ["/static/pic1.jpeg", "/static/pic2.jpeg"],
-					userInfo: {
-						id: "12345",
-						avatar: "/static/boyAvatar.png",
-						name: "总想",
-						grade: "1", //等级
-						age: "26岁",
-						Constellation: "处女座",
-						gender: "男",
-						height: "165cm",
-						weight: "60kg",
-						birthYear: "95年",
-						profession: "老师",
-						company: "某某公司",
-						education: "本科",
-						university: "长沙理工大学",
-						city: "深圳",
-						province: "江西",
-						hometown: "宜春"
-					},
-				}]
+					{
+						momentId: 1234,
+						publishTime: 1648826822000,
+						publishTag: "单身狗的日常",
+						comments: [{
+								userName: "blakeyi",
+								comment: "世事早已擦肩而过，我们又何必反复追忆，反复提起。是时候和昨天告别了"
+							},
+							{
+								userName: "blakeyi",
+								comment: "世事早已擦肩而过，我们又何必反复追忆，反复提起。是时候和昨天告别了"
+							},
+							{
+								userName: "blakeyi",
+								comment: "世事早已擦肩而过，我们又何必反复追忆，反复提起。是时候和昨天告别了"
+							},
+							{
+								userName: "blakeyi",
+								comment: "世事早已擦肩而过，我们又何必反复追忆，反复提起。是时候和昨天告别了"
+							},
+						],
+						status: {
+							likes: 12,
+							comments: 12,
+							views:123
+						},
+						content: "世事早已擦肩而过，我们又何必反复追忆，反复提起。是时候和昨天告别了，忘记一切，也" +
+							"原谅一切。是真的忘记，做到心平气和，在安稳的现世里，循规蹈矩的过日子。不再追求虚浮的奢华" +
+							"不再喜好俏丽的颜色，不再渴望热烈的爱情。只愿在简约的四季里，穿粗布素衣，和某个平淡的人，一\n同老去，相约白头。",
+						pictures: ["/static/pic1.jpeg", "/static/pic2.jpeg"],
+						userInfo: {
+							id: "12345",
+							avatar: "/static/boyAvatar.png",
+							name: "总想",
+							grade: "1", //等级
+							age: "26岁",
+							Constellation: "处女座",
+							gender: "男",
+							height: "165cm",
+							weight: "60kg",
+							birthYear: "95年",
+							profession: "老师",
+							company: "某某公司",
+							education: "本科",
+							university: "长沙理工大学",
+							city: "深圳",
+							province: "江西",
+							hometown: "宜春"
+						},
+					}
+				]
 			}
 		},
 		methods: {
@@ -221,9 +273,11 @@
 				this.duration = e.detail.value
 			},
 			handleViewInroduce() {},
-			handleEnterMoment(item){
+			handleEnterMoment(item) {
 				uni.navigateTo({
-					url:"/pages/basic/otherMoment/otherMoment"
+					url: "/pages/basic/otherMoment/otherMoment?data=" + JSON.stringify(item),
+					animationType: 'pop-in',
+					animationDuration: 200
 				})
 			},
 			previewImg(logourl) {
@@ -395,6 +449,7 @@
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
+		padding: 1rem;
 	}
 
 	.momentContent {
@@ -409,6 +464,11 @@
 		width: 90%;
 		vertical-align: middle;
 		margin-bottom: 1rem;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		display: -webkit-box;
+		-webkit-line-clamp: 5; //2行
+		-webkit-box-orient: vertical;
 	}
 
 	.moment-picture-one {
@@ -441,12 +501,13 @@
 		justify-content: flex-start;
 		align-self: flex-start;
 		margin-left: 1rem;
-		padding: 0.1rem;
-		height: 2rem;
-		line-height: 2rem;
-		font-size: 1rem;
+		padding: 0.2rem;
+		height: 1rem;
+		line-height: 1rem;
+		font-size: 0.5rem;
 		background-color: #ededed;
 		border-radius: 20rpx;
+
 	}
 
 	.toolbar {
@@ -454,13 +515,24 @@
 		flex-direction: row;
 		justify-content: space-between;
 		width: 90%;
+		padding: 0.5rem;
 	}
 
-	.comment {
+	.comments {
 		display: flex;
 		flex-direction: column;
 		width: 90%;
 		background-color: #ededed;
+		padding: 0.5rem;
+		border-radius: 10rpx;
+	}
+
+	.comment {
+		overflow: hidden;
+		text-overflow: ellipsis;
+		display: -webkit-box;
+		-webkit-line-clamp: 2; //2行
+		-webkit-box-orient: vertical;
 	}
 
 	.comment-author {
@@ -468,6 +540,7 @@
 		height: 1.5rem;
 		color: #6d71ee;
 		padding: 0.3rem;
+		font-size: 0.8rem;
 
 	}
 
@@ -475,6 +548,7 @@
 		line-height: 1.5rem;
 		height: 1.5rem;
 		padding: 0.3rem;
+		font-size: 0.8rem;
 
 	}
 </style>

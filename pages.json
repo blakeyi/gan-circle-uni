@@ -1,12 +1,20 @@
 {
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 		{
+		    "path" : "pages/basic/otherMoment/otherMoment",
+		    "style" :                                                                                    
+		    {
+		        "navigationBarTitleText": "动态详情",
+		        "enablePullDownRefresh": false
+		    }
+		    
+		},{
 			"path": "pages/tabBar/socialCircle/socialCircle",
 			"style": {
 				"navigationBarTitleText": "圈儿",
 				"enablePullDownRefresh": false
 			}
-
+		
 		}, {
 			"path": "pages/tabBar/recommend/recommend",
 			"style": {
@@ -198,11 +206,21 @@
 			}
 
 		}
-	    ,{
-            "path" : "pages/basic/otherMoment/otherMoment",
+	    
+        ,{
+            "path" : "pages/basic/interactive/interactive",
             "style" :                                                                                    
             {
-                "navigationBarTitleText": "",
+                "navigationBarTitleText": "互动列表",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/basic/replyes/replyes",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "全部评论",
                 "enablePullDownRefresh": false
             }
             
