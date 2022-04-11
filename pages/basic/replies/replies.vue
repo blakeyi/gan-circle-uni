@@ -32,10 +32,41 @@
 						<van-icon name="ellipsis" size="30px" />
 					</div>
 				</div>
-			<div>回复</div>
-			<div class="reply">
-				
-			</div>
+				<div class="replies">
+					<div class="reply" v-for="(item,index) in comment.replies" :key="index" >
+						<div class="list" @click="handleViewInroduce(comment.fromUser)">
+							<van-image round width="3rem" height="3rem" fit="cover" :src="comment.fromUser.avatar"
+								style="margin-top: 2rem;" />
+							<div style="width: 75%; display: flex; flex-direction: column; justify-content: flex-start; 
+									margin-left: 1rem;align-items: flex-start;">
+								<div style="height: 1.5rem; line-height: 1.5rem;">
+									{{item.fromUser.name}}
+									<van-image v-if="item.fromUser.gender=='男'" round width="1rem" height="1rem"
+										fit="cover" src="/static/gender-boy.png" />
+									<van-image v-else round width="1rem" height="1rem" fit="cover"
+										src="/static/gender-girl.png" />
+								</div>
+								<div style="height: 1.5rem; line-height: 1.5rem;">
+									{{item.fromUser.birthYear}}.{{item.fromUser.profession}}
+								</div>
+							</div>
+							<div style="align-self: flex-end;">
+								<van-icon v-if="item.isLiked" name="like" color="#FF668A" />
+								<van-icon v-else name="like-o" color="#6d71ee" />
+							</div>
+						</div>
+						回复<span style="color: #8182FF;">{{item.toUser.name}}:</span>
+						<span>{{item.comment}}</span>
+						<div style="display: flex; flex-direction: row; justify-content: space-between; width: 100%;
+						margin-top: 1rem;">
+							<div class="publishTime">{{getDateDiff(item.commentTime)}}</div>
+							<div class="viewNum">
+								<van-icon name="ellipsis" size="30px" />
+							</div>
+						</div>
+					</div>
+
+				</div>
 			</van-col>
 		</van-row>
 	</view>
@@ -45,7 +76,7 @@
 	export default {
 		data() {
 			return {
-				comment: null,
+				comment: {},
 			}
 		},
 		onLoad(url) {
@@ -103,6 +134,19 @@
 		border-top: #F7F7F7;
 		border-top-width: 1rpx;
 		border-top-style: solid;
+		width: 100%;
+	}
+	
+	.replies {
+		display: flex;
+		flex-direction: column;
+		width: 90%;
+		justify-content: flex-end;
+		align-items: flex-end;
+		margin-left: 10%;
+	}
+	
+	.reply{
 		width: 100%;
 	}
 </style>

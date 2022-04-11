@@ -118,7 +118,7 @@
 								</div>
 								<div>{{comment.comment}}</div>
 								<div class="reply">
-									<div style="width: 100%; margin-top: 0.2rem;" v-if="index < 3" v-for="(reply,index) in comment.replyes"
+									<div style="width: 100%; margin-top: 0.2rem;" v-if="index < 3" v-for="(reply,index) in comment.replies"
 										:key="index">
 										<div style="width: 100%;">
 											<span style="color: #6d71ee;" @click="handleViewIntro(reply.fromUser)">{{reply.fromUser.name}}</span>
@@ -127,9 +127,9 @@
 										</div>
 										<div>{{reply.comment}}</div>
 									</div>
-									<div v-if="comment.replyes.length > 1" style="color:#6d71ee;font-size: 0.8rem;"
-									@click="handleViewReplyes(comment)">
-										查看全部{{comment.replyes.length}}条评论</div>
+									<div v-if="comment.replies.length > 1" style="color:#6d71ee;font-size: 0.8rem;"
+									@click="handleViewReplies(comment)">
+										查看全部{{comment.replies.length}}条评论</div>
 								</div>
 								
 							</div>
@@ -170,7 +170,7 @@
 								</div>
 								<div>{{comment.comment}}</div>
 								<div class="reply">
-									<div style="width: 100%; margin-top: 0.2rem;" v-if="index < 3" v-for="(reply,index) in comment.replyes"
+									<div style="width: 100%; margin-top: 0.2rem;" v-if="index < 3" v-for="(reply,index) in comment.replies"
 										:key="index">
 										<div style="width: 100%;">
 											<span style="color: #6d71ee;" @click="handleViewIntro(reply.fromUser)">{{reply.fromUser.name}}</span>
@@ -179,9 +179,9 @@
 										</div>
 										<div>{{reply.comment}}</div>
 									</div>
-									<div v-if="comment.replyes.length > 1" style="color:#6d71ee;font-size: 0.8rem;"
-									@click="handleViewReplyes(comment)">
-										查看全部{{comment.replyes.length}}条评论</div>
+									<div v-if="comment.replies.length > 1" style="color:#6d71ee;font-size: 0.8rem;"
+									@click="handleViewReplies(comment)">
+										查看全部{{comment.replies.length}}条评论</div>
 								</div>
 								
 							</div>
@@ -229,7 +229,7 @@
 							},
 							commentTime:1648826822000,
 							comment: "世事早已擦肩而过，我们又何必反复追忆，反复提起。是时候和昨天告别了",
-							replyes: [{
+							replies: [{
 								fromUser: {
 									id: "12345",
 									avatar: "/static/boyAvatar.png",
@@ -288,7 +288,7 @@
 							},
 							commentTime:1648826822000,
 							comment: "世事早已擦肩而过，我们又何必反复追忆，反复提起。是时候和昨天告别了",
-							replyes: [{
+							replies: [{
 								fromUser: {
 									id: "12345",
 									avatar: "/static/boyAvatar.png",
@@ -305,6 +305,7 @@
 									profession: "老师",
 									gender: "男",
 								},
+								commentTime:1648826822000,
 								comment: "世事早已擦肩而过，我们又何必反复追忆，反复提起。是时候和昨天告别了",
 							},
 							{
@@ -388,7 +389,7 @@
 						},
 						commentTime:1648826822000,
 						comment: "世事早已擦肩而过，我们又何必反复追忆，反复提起。是时候和昨天告别了",
-						replyes: [{
+						replies: [{
 							fromUser: {
 								id: "12345",
 								avatar: "/static/boyAvatar.png",
@@ -510,9 +511,9 @@
 				console.log('handleFocus')
 				this.moment.isFocus = true
 			},
-			handleViewReplyes(comment){
+			handleViewReplies(comment){
 				uni.navigateTo({
-					url: '/pages/basic/replyes/replyes?data='+JSON.stringify(comment)
+					url: '/pages/basic/replies/replies?data='+JSON.stringify(comment)
 				})
 			},
 			
