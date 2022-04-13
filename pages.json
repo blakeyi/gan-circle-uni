@@ -8,6 +8,29 @@
 			}
 		
 		},{
+		    "path" : "pages/basic/phoneLogin/phoneLogin",
+		    "style" :                                                                                    
+		    {
+		        "navigationBarTitleText": "",
+		        "enablePullDownRefresh": false
+		    }
+		    
+		},{
+		    "path" : "pages/basic/login/login",
+		    "style" :                                                                                    
+		    {
+		        "navigationBarTitleText": "",
+		        "enablePullDownRefresh": false
+		    }
+		    
+		},{
+			"path": "pages/basic/setting/setting",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+		
+		},{
 		    "path" : "pages/basic/otherMoment/otherMoment",
 		    "style" :                                                                                    
 		    {
@@ -128,14 +151,7 @@
 				"enablePullDownRefresh": false
 			}
 
-		}, {
-			"path": "pages/basic/setting/setting",
-			"style": {
-				"navigationBarTitleText": "",
-				"enablePullDownRefresh": false
-			}
-
-		}, {
+		},  {
 			"path": "pages/basic/shop/shop",
 			"style": {
 				"navigationBarTitleText": "",
@@ -225,6 +241,8 @@
             }
             
         }
+        
+        
     ],
 
 	"globalStyle": {
@@ -251,6 +269,7 @@
 			"van-dropdown-item": "/wxcomponents/vant/dist/dropdown-item/index",
 			"van-share-sheet": "/wxcomponents/vant/dist/share-sheet/index",
 			"van-field": "/wxcomponents/vant/dist/field/index",
+			"van-checkbox": "/wxcomponents/vant/dist/checkbox/index",
 			"circle": "/wxcomponents/circle/circle"
 		}
 	},
