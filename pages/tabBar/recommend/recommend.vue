@@ -62,6 +62,9 @@
 
 			}
 		},
+		onLoad() {
+			console.log("onLoad")
+		},
 		methods: {
 			handleReplay() {
 				uni.navigateTo({
